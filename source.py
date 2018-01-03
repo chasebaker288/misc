@@ -5,7 +5,7 @@ def pickfrom(*things):
 	"""Returns a randomly chosen input."""
 	output = things
 	if len(things) == 1:
-		if isinstance(things[0], (list, tuple, set, dict)):
+		if isinstance(things[0], (list, tuple, set, dict, str)):
 			output = []
 			for item in things[0]:
 				output.append(item)
@@ -13,5 +13,5 @@ def pickfrom(*things):
 			pass
 	else:
 		pass
-	return things[randint(0,len(things)-1)]
+	return output[randint(0,len(output)-1)]
 
