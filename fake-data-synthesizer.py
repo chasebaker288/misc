@@ -3,22 +3,25 @@
 from random import randint
 
 
-def corr(dataset1, dataset2):
-	n = len(dataset1)
-	if n != len(dataset2):
+def corr(variable1, variable2):
+""" Returns the correlation coefficient between two variables. The function assumes both sets of data are in the same order - that is, the first data point in list 1 is linked to the first data point in list 2."""
+	n = len(variable1)
+	if n != len(variable2):
 		return "ERROR - dataset sizes do not match"
-	x = dataset1
-	y = dataset2
+	x = variable1
+	y = variable2
 	return (n*(sum([(x[i]*y[i]) for i in range(n)])) - sum(x)*sum(y)) / ((n*sum([i**2 for i in x]) - sum(x)**2) * (n*sum([i**2 for i in y]) - sum(x)**2))**0.5
 
 
 def stdev(listofvalues):
+""" Returns the standard deviation of a set of numbers."""
 	xbar = sum(listofvalues)/len(listofvalues)
 	output = [pow((x - xbar), 2) for x in listofvalues]
-	return (sum(output)/(len(listofvalues)-1))**0.5
+	return (sum(output)/len(listofvalues))**0.5
 
 
-def psuedogauss():  # Returns a value from -3.0 to 3.0, with probabilities roughly matching a normal distribution
+def psuedogauss():
+""" Returns a value from -3.0 to 3.0, with probabilities roughly matching a normal distribution."""
 	return (randint(-100, 100) + randint(-100, 100) + randint(-100, 100))/100
 
 
@@ -40,7 +43,7 @@ def generate(dataset1, dataset2):
 	return [[round(fakedata1[i], 1), round(fakedata2[i])] for i in range(len(fakedata1)) if 0.85*min2 <= fakedata2[i] <= 1.15*max2]  # Trims results to only those with realistic bounds. E.G. no negatives for number of cars owned 
 
 
-DATA = [  # Placeholder data, via Wikipedia.  Population growth rate %  VS  cars owned per capita.
+DATA = [  # Placeholder data, via Wikipedia.  Population growth rate  VS  cars owned per capita.
 	[0.4, 154],  # China
 	[1.1, 151],  # India
 	[0.7, 795],  # USA
