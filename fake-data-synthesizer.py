@@ -4,7 +4,9 @@ from random import randint
 
 
 def corr(variable1, variable2):
-""" Returns the correlation coefficient between two variables. The function assumes both sets of data are in the same order - that is, the first data point in list 1 is linked to the first data point in list 2."""
+""" Returns the correlation coefficient between two variables.
+The function assumes both sets of data are in the same order.
+That is, the Nth data point in list A is paired with the Nth data point in list B."""
 	n = len(variable1)
 	if n != len(variable2):
 		return "ERROR - dataset sizes do not match"
